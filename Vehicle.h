@@ -17,7 +17,7 @@ protected:
 public:
     Vehicle(const std::string &brand, const std::string &model, const int vehProductionYear, const int wheelCount);
     Vehicle () = default;
-    virtual void doTekstu() const = 0;
+    virtual void toText() const = 0;
 
 };
 

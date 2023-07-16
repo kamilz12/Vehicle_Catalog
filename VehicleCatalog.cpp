@@ -20,7 +20,7 @@ void VehiceCatalog::addCarsToCatalog(){
         std::cout << "enter GVW: "; std::cin >> GVW;
         Cars* car = new Cars (brand, model, produYear, wheelCount, driveTrain, GVW);
         Vehicle* vehice = car;
-        this->addCar(i, vehice);
+        this->addVehicle(i, vehice);
     }
 }
 
@@ -28,7 +28,7 @@ void VehiceCatalog::showInfo() const
 {
     for (const auto& element : catalog) {
         std::cout << "ID: " << element.first << std::endl;
-        element.second->doTekstu();
+        element.second->toText();
         std::cout << std::endl;
     }
 }

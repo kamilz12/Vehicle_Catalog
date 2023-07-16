@@ -13,17 +13,15 @@
 
 class VehiceCatalog {
 private:
+    /*a map of all vehicles*/
     std::map<int, Vehicle*> catalog;
 
 public:
-    void addCar(int ID, Vehicle* vehicle) {
+    void addVehicle(int ID, Vehicle* vehicle) {
         catalog[ID] = vehicle;
     }
-
     void showInfo() const;
-
     Vehicle* operator[](int ID);
-
     void addCarsToCatalog ();
 };
 

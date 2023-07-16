@@ -15,14 +15,14 @@ public:
               const int vehicleWheelCount, int vMax_parameter, const std::string& typ_parameter);
 
 
-    void doTekstu()  const override{
+    void toText()  const override{
         std::cout <<
-                  "Marka:" << brand << std::endl <<
+                  "Brand:" << brand << std::endl <<
                   "Model: " << model << std::endl <<
-                  "Rok produkcji : " << vehProductionYear << std::endl <<
-                  "Liczba kol: " << wheelCount << std::endl <<
-                  "vmax : " << vMax << std::endl <<
-                  "type: " << type << std::endl;
+                  "Year of production : " << vehProductionYear << std::endl <<
+                  "Wheel Count: " << wheelCount << std::endl <<
+                  "Maximum Speed : " << vMax << std::endl <<
+                  "Type: " << type << std::endl;
     }
 };
 
