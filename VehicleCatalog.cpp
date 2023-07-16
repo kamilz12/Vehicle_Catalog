@@ -2,9 +2,9 @@
 // Created by Krul Kamil on 21.06.2023.
 //
 
-#include "VehiceCatalog.h"
+#include "VehicleCatalog.h"
 
-void VehiceCatalog::addCarsToCatalog(){
+void VehicleCatalog::addCarsToCatalog(){
     int carsCount;
     std::cout << "How many cars do you want to add to your catalog?" << std::endl;
     std::cin >> carsCount;
@@ -24,7 +24,7 @@ void VehiceCatalog::addCarsToCatalog(){
     }
 }
 
-void VehiceCatalog::showInfo() const
+void VehicleCatalog::showInfo() const
 {
     for (const auto& element : catalog) {
         std::cout << "ID: " << element.first << std::endl;
@@ -33,7 +33,7 @@ void VehiceCatalog::showInfo() const
     }
 }
 
-Vehicle* VehiceCatalog::operator[](int ID){
+Vehicle* VehicleCatalog::operator[](int ID){
     if (catalog.count(ID) == 0) {
         std::cout << "Vehicle doesn't exist." << std::endl;
         return nullptr; // zabezpieczenie gdybby podany id nie istnial

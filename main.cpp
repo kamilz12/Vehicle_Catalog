@@ -1,10 +1,10 @@
 #include "Vehicle.h"
 #include "Cars.h"
 #include "Motocycle.h"
-#include "VehiceCatalog.h"
+#include "VehicleCatalog.h"
 
 int main() {
-    VehiceCatalog vehicleCatalog;
+    VehicleCatalog vehicleCatalog;
     vehicleCatalog.addCarsToCatalog();
     vehicleCatalog.showInfo();
 return 0;

@@ -2,8 +2,8 @@
 // Created by Krul Kamil on 21.06.2023.
 //
 
-#ifndef KOLOKWIUM2_VEHICECATALOG_H
-#define KOLOKWIUM2_VEHICECATALOG_H
+#ifndef KOLOKWIUM2_VEHICLECATALOG_H
+#define KOLOKWIUM2_VEHICLECATALOG_H
 
 #include "Vehicle.h"
 #include "Motocycle.h"
@@ -11,7 +11,7 @@
 #include <iostream>
 #include <map>
 
-class VehiceCatalog {
+class VehicleCatalog {
 private:
     /*a map of all vehicles*/
     std::map<int, Vehicle*> catalog;
@@ -25,4 +25,4 @@ public:
     void addCarsToCatalog ();
 };
 
-#endif //KOLOKWIUM2_VEHICECATALOG_H
+#endif //KOLOKWIUM2_VEHICLECATALOG_H
