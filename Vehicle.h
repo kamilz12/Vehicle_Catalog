@@ -1,9 +1,7 @@
-//
-// Created by Krul Kamil on 21.06.2023.
-//
+
 #include <iostream>
 #include <string>
-
+#include <vector>
 #ifndef KOLOKWIUM2_POJAZD_H
 #define KOLOKWIUM2_POJAZD_H
 
@@ -15,8 +13,8 @@ protected:
     const int wheelCount;
 
 public:
+    virtual ~Vehicle() {}
     Vehicle(const std::string &brand, const std::string &model, const int vehProductionYear, const int wheelCount);
-    Vehicle () = default;
     virtual void toText() const = 0;
 
 };

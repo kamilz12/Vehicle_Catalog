@@ -1,42 +1,35 @@
-//
-// Created by Krul Kamil on 21.06.2023.
-//
 
 #include "VehicleCatalog.h"
+#include <iostream>
 
-void VehicleCatalog::addCarsToCatalog(){
-    int carsCount;
-    std::cout << "How many cars do you want to add to your catalog?" << std::endl;
-    std::cin >> carsCount;
-    for (int i=0;i<carsCount;i++)
-    {
-        std::string brand,model,driveTrain;
-        int produYear, wheelCount, GVW;
-        std::cout << "enter brand: "; std::cin >> brand;
-        std::cout << "enter model: "; std::cin >> model;
-        std::cout << "enter year of production: "; std::cin >> produYear;
-        std::cout << "enter number of wheels: "; std::cin >> wheelCount;
-        std::cout << "enter drive train (4x4,rwd,fwd): "; std::cin >> driveTrain;
-        std::cout << "enter GVW: "; std::cin >> GVW;
-        Cars* car = new Cars (brand, model, produYear, wheelCount, driveTrain, GVW);
-        Vehicle* vehice = car;
-        this->addVehicle(i, vehice);
+/*Function */
+int VehicleCatalog::getLastCatalogMapID(){
+    if (catalog.empty()) {
+        std::cout << "Map is empty!";
+        return -1;
     }
+    // Value of last ID in map
+    return catalog.rbegin()->first;
 }
 
-void VehicleCatalog::showInfo() const
-{
+
+
+/*We are printing information about each element in our map*/
+void VehicleCatalog::showInfo() const{
     for (const auto& element : catalog) {
         std::cout << "ID: " << element.first << std::endl;
-        element.second->toText();
+        if (element.second) {
+            element.second->toText();
+        } else {
+            std::cout << "Vehicle object is null." << std::endl;
+        }
         std::cout << std::endl;
     }
 }
-
 Vehicle* VehicleCatalog::operator[](int ID){
     if (catalog.count(ID) == 0) {
         std::cout << "Vehicle doesn't exist." << std::endl;
-        return nullptr; // zabezpieczenie gdybby podany id nie istnial
+        return nullptr;
     }
     return catalog [ID];
 }
