@@ -69,6 +69,7 @@ int main() {
     vehicleCatalog.addVehicle(vehicle1, 7);
 
     addManyVehicles<Cars>(vehicleCatalog, 2);
+    addManyVehicles<Motocycle>(vehicleCatalog, 3);
     //addManyVehicles<Motocycle>(vehicleCatalog, 2);
     vehicleCatalog.showInfo();
 //  std::cout << vehicleCatalog [2];
