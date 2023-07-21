@@ -1,52 +1,49 @@
 
 #ifndef KOLOKWIUM2_VEHICLECATALOG_H
 #define KOLOKWIUM2_VEHICLECATALOG_H
-
+#include <sstream>
 #include "Vehicle.h"
 #include "Motocycle.h"
 #include "Cars.h"
 #include <iostream>
 #include <map>
-
+#include <fstream>
+#include <string>
 class VehicleCatalog {
 private:
-    /*A map of all vehicles*/
     std::map<int, Vehicle*> catalog;
 
 public:
+    void loadCatalogFromFile (const std::string& fileName);
     int getLastCatalogMapID();
-    void addVehicle (Vehicle* vehicle, int ID){
-        catalog[ID] = vehicle;
-    }
+    void editVehicle(Vehicle* vehicle, int ID);
+    int getAvailableID ();
+    int getAvailableID (int startLookUpID);
+    void addVehicle (Vehicle* vehicle);
+    void addVehicle (Vehicle* vehicle, int ID);
+    void showInfo() const;
+
     /*This method allow us to add more than one vehicle*/
     template <typename VehicleType>
     void addVehicles(std::vector<VehicleType*>&veh_vector){
-        int lastID = getLastCatalogMapID();
         int numVehiclesToAdd = static_cast<int>(veh_vector.size());
         /*Looking for first not used ID*/
-        int nextID = 0;
-        while(!isIDNotPresentInCatalog(nextID)) {
-            nextID++;
-        }
+        int nextID = getAvailableID();
         // Add vehicles to the catalog with sequential IDs
         for(int i=0; i<numVehiclesToAdd; i++) {
-            // Find the next available ID
-            while(!isIDNotPresentInCatalog(nextID)) {
-                nextID++;
-            }
-// Add the vehicle to the catalog with the next available ID
+            nextID = getAvailableID(nextID);
             addVehicle(veh_vector[i], nextID);
-            nextID++; // Increment the nextID to be used for the next vehicle
+            nextID++;
         }
     }
+
+    void removeVehicle (int ID);
     const std::map<int, Vehicle*>& getCatalogMap() const {
         return catalog;
     }
     bool isIDNotPresentInCatalog(int ID) {
         return catalog.find(ID) == catalog.end();
     }
-    void showInfo() const;
-
     Vehicle* operator[](int ID);
 };
 

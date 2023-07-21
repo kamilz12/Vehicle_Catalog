@@ -13,17 +13,15 @@ public:
     Motocycle(const std::string &vehicleBrand, const std::string &vehicleModel, const int vehicleProductionYear,
               const int vehicleWheelCount, int vMax_parameter, const std::string& typ_parameter);
 
-    virtual void toText()  const override{
+    virtual void writeToText()  const override{
         std::cout <<
                   "Brand:" << brand << std::endl <<
                   "Model: " << model << std::endl <<
                   "Year of production : " << vehProductionYear << std::endl <<
                   "Wheel Count: " << wheelCount << std::endl <<
                   "Maximum Speed : " << vMax << std::endl <<
-                  "Type: " << type << std::endl;
+                  "Type: " << type << std::endl << std::endl;
     }
-
-
 };
 
 

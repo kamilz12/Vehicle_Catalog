@@ -20,14 +20,14 @@ public:
         else {return true;}
     }
 
-    virtual void toText() const override {
+    virtual void writeToText() const override {
         std::cout <<
                   "Brand:" << brand << std::endl <<
                   "Model: " << model << std::endl <<
                   "Year of production: " << vehProductionYear << std::endl <<
                   "Wheel Count: " << wheelCount << std::endl <<
                   "Drive Train : " << driveTrain << std::endl <<
-                  "Possible Total Weight: " << pessibleTotalWeight;
+                  "Possible Total Weight: " << pessibleTotalWeight << std::endl;
     }
 
 

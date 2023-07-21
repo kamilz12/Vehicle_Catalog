@@ -15,7 +15,7 @@ protected:
 public:
     virtual ~Vehicle() {}
     Vehicle(const std::string &brand, const std::string &model, const int vehProductionYear, const int wheelCount);
-    virtual void toText() const = 0;
+    virtual void writeToText() const = 0;
 
 };
 

@@ -5,42 +5,35 @@
 
 template <typename VehicleType>
 VehicleType* inputVehicleData (){
-
+    std::string brand, model;
+    int productionYear, wheelCount;
+    std::cout << "Enter brand: ";
+    std::cin >> brand;
+    std::cout << "Enter model: ";
+    std::cin >> model;
+    std::cout << "Enter year of production: ";
+    std::cin >> productionYear;
+    std::cout << "Enter number of wheels: ";
+    std::cin >> wheelCount;
     if constexpr (std::is_same<Cars, VehicleType>::value) {
-        std::string brand, model, driveTrain; //brand of car, model of car, (4x4,rwd,fwd)
-        int productionYear, wheelCount, GVW; //year of production, number of wheels, possible total weight
-        std::cout << "Enter brand: ";
-        std::cin >> brand;
-        std::cout << "Enter model: ";
-        std::cin >> model;
-        std::cout << "Enter year of production: ";
-        std::cin >> productionYear;
-        std::cout << "Enter number of wheels: ";
-        std::cin >> wheelCount;
+        std::string driveTrain; //brand of car, model of car, (4x4,rwd,fwd)
+        int  GVW; //year of production, number of wheels, possible total weight
         std::cout << "Enter drive train (4x4,rwd,fwd): ";
         std::cin >> driveTrain;
         std::cout << "Enter GVW: ";
         std::cin >> GVW;
         return new VehicleType(brand, model, productionYear, wheelCount, driveTrain, GVW);
     }
+
     else if constexpr (std::is_same<VehicleType, Motocycle>::value){
-        std::string brand, model,type;
-        int productionYear, wheelCount,vMax;
-        std::cout << "Enter brand: ";
-        std::cin >> brand;
-        std::cout << "Enter model: ";
-        std::cin >> model;
-        std::cout << "Enter year of production: ";
-        std::cin >> productionYear;
-        std::cout << "Enter number of wheels: ";
-        std::cin >> wheelCount;
-        std::cout << "Enter number of wheels: ";
+        std::string type;
+        int vMax;
+        std::cout << "Enter maximum speed: ";
         std::cin >> vMax;
-        std::cout << "Enter number of wheels: ";
+        std::cout << "Enter type: ";
         std::cin >> type;
         return new VehicleType (brand,model,productionYear,wheelCount, vMax, type);
     }
-
 }
 /*That function allow us to add specifed number of cars to our catalog*/
 template <typename VehicleType>
@@ -55,24 +48,22 @@ void addManyVehicles(VehicleCatalog& vehicleCatalog, int numVehicles) {
     vehicleCatalog.addVehicles(vehicleVector);
 }
 
-
+template <typename VehicleType>
+void editVehicle(VehicleCatalog& catalog, int ID) {
+    Vehicle* editedVehicle = inputVehicleData<VehicleType>();
+    catalog.editVehicle(editedVehicle,ID);
+}
 
 int main() {
     VehicleCatalog vehicleCatalog;
-    Vehicle* vehicle1 = new Cars("abw", "e52", 2005, 4, "4", 4);
-    vehicleCatalog.addVehicle(vehicle1, 1);
-    Vehicle* vehicle2 = new Cars("bqw", "e53", 2004, 4, "4", 4);
-    vehicleCatalog.addVehicle(vehicle2, 0);
-    Vehicle* vehicle3 = new Cars("bws", "e51", 2002, 4, "4", 4);
-    vehicleCatalog.addVehicle(vehicle3, 2);
-    Vehicle* vehicle7 = new Cars("zbw", "e58", 2001, 4, "4", 4);
-    vehicleCatalog.addVehicle(vehicle1, 7);
-
-    addManyVehicles<Cars>(vehicleCatalog, 2);
-    addManyVehicles<Motocycle>(vehicleCatalog, 3);
-    //addManyVehicles<Motocycle>(vehicleCatalog, 2);
+    std::string pathToVehicleData {"Data_files/vehicle-data.dat"};
+    Vehicle* vehicle1 = new Cars("Honda", "Accord", 2005, 4, "4x4", 1300);
+    vehicleCatalog.addVehicle(vehicle1,10);
+    addManyVehicles<Cars>(vehicleCatalog,1);
+    vehicleCatalog.loadCatalogFromFile(pathToVehicleData);
     vehicleCatalog.showInfo();
-//  std::cout << vehicleCatalog [2];
-return 0;
+    addManyVehicles<Motocycle>(vehicleCatalog,1);
+
+    return 0;
 }
 

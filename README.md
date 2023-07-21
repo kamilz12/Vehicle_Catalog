@@ -3,7 +3,7 @@ Vehicle Catalog - C++ Project
 Vehicle Catalog is a C++ program that allows users to create and manage a catalog of cars and motorcycles. The program leverages object-oriented programming (OOP) principles, including polymorphism and templates, to efficiently handle different types of vehicles.
 Key Features
 
-    Vehicle Class: This is an abstract base class representing a generic vehicle. It holds common attributes like brand, model, year of production, and wheel count. It also defines a pure virtual function toText() that must be implemented in derived classes.
+    Vehicle Class: This is an abstract base class representing a generic vehicle. It holds common attributes like brand, model, year of production, and wheel count. It also defines a pure virtual function writeToText() that must be implemented in derived classes.
 
     Cars Class: Derived from the Vehicle class, this class represents a car. It includes additional attributes specific to cars, such as the type of drive train and possible total weight.
 
