@@ -8,7 +8,7 @@
 class Motorcycle : public Vehicle {
 private:
     int vMax;
-    const std::string type;
+    const std::string  type;
     virtual std::string saveText () const override {
         std::stringstream ss;
         ss << "Motorcycle" << "," << brand << "," << model<< "," <<vehProductionYear<< "," <<wheelCount<< "," <<vMax<< "," <<type <<std::endl;
