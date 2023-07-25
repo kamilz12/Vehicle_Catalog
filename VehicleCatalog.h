@@ -1,19 +1,23 @@
 
 #ifndef VEHICLE_CATALOG_VEHICLECATALOG_H
 #define VEHICLE_CATALOG_VEHICLECATALOG_H
-#include <sstream>
+
 #include "Vehicle.h"
 #include "Motorcycle.h"
 #include "Car.h"
+
+#include <fstream>
 #include <iostream>
 #include <map>
-#include <fstream>
+#include <sstream>
 #include <string>
+#include <vector>
+
 class VehicleCatalog {
 private:
     std::map<int, Vehicle*> catalog;
 public:
-
+    ~VehicleCatalog() {}
     void loadVehicleDataFromFile (const std::string& fileName);
     void saveVehicleDataToFile (const std::string& fileName);
     int getLastCatalogMapID();
@@ -40,12 +44,8 @@ public:
     }
 
     void removeVehicle (int ID);
-    const std::map<int, Vehicle*>& getCatalogMap() const {
-        return catalog;
-    }
-    bool isIDNotPresentInCatalog(int ID) {
-        return catalog.find(ID) == catalog.end();
-    }
+    const std::map<int, Vehicle*>& getCatalogMap() const;
+    bool isIDNotPresentInCatalog(int ID);
     Vehicle* operator[](int ID);
 };
 

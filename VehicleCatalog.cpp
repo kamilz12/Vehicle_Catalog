@@ -171,3 +171,11 @@ void VehicleCatalog::saveVehicleDataToFile(const std::string &fileName) {
     }
     outputFile.close();
 }
+
+const std::map<int, Vehicle *> &VehicleCatalog::getCatalogMap() const {
+    return catalog;
+}
+
+bool VehicleCatalog::isIDNotPresentInCatalog(int ID) {
+    return catalog.find(ID) == catalog.end();
+}

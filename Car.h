@@ -1,41 +1,21 @@
-
-#include "Vehicle.h"
-
 #ifndef VEHICLE_CATALOG_CAR_H
 #define VEHICLE_CATALOG_CAR_H
 
+#include "Vehicle.h"
+#include <sstream>
 
 class Car: public Vehicle {
 private:
     std::string driveTrain;
     int pessibleTotalWeight;
-    virtual std::string saveText() const override{
-        std::stringstream ss;
-        ss << "Car" << "," << brand << "," << model<< "," <<vehProductionYear<< "," <<wheelCount<< "," <<driveTrain<< "," <<pessibleTotalWeight << std::endl;
-        std::string dataFormula = ss.str();
-        return dataFormula;
-    }
+
+    virtual std::string saveText() const override;
 public:
-    Car (const std::string& vehicleBrand, std::string vehicleModel, int vehicleProudctionYear, int vehicleWheelCount, const std::string& driveTrain, int GVW);
-     virtual ~Car(){}
+    Car(const std::string& vehicleBrand, std::string vehicleModel, int vehicleProudctionYear, int vehicleWheelCount, const std::string& driveTrain, int GVW);
+    virtual ~Car(){}
 
-    bool isDeliveryVan () const{
-        if (pessibleTotalWeight > 3500){
-            return false;
-        }
-        else {return true;}
-    }
-
-    virtual void writeToText() const override {
-        std::cout <<
-                  "Brand:" << brand << std::endl <<
-                  "Model: " << model << std::endl <<
-                  "Year of production: " << vehProductionYear << std::endl <<
-                  "Wheel Count: " << wheelCount << std::endl <<
-                  "Drive Train : " << driveTrain << std::endl <<
-                  "Possible Total Weight: " << pessibleTotalWeight << std::endl;
-    }
-
+    bool isDeliveryVan () const;
+    virtual void writeToText() const override;
 
 };
 

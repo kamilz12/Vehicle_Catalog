@@ -2,7 +2,9 @@
 #include "Car.h"
 #include "Motorcycle.h"
 #include "VehicleCatalog.h"
+
 #include <vector>
+
 template <typename VehicleType>
 VehicleType* inputVehicleData (){
     std::string brand, model;
@@ -15,7 +17,7 @@ VehicleType* inputVehicleData (){
     std::cin >> productionYear;
     std::cout << "Enter number of wheels: ";
     std::cin >> wheelCount;
-    if constexpr (std::is_same<Car, VehicleType>::value) {
+    if  constexpr (std::is_same<Car, VehicleType>::value) {
         std::string driveTrain; //brand of car, model of car, (4x4,rwd,fwd)
         int  GVW; //year of production, number of wheels, possible total weight
         std::cout << "Enter drive train (4x4,rwd,fwd): ";
