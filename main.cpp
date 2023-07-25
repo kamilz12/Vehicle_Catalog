@@ -1,8 +1,8 @@
 #include "Vehicle.h"
-#include "Cars.h"
-#include "Motocycle.h"
+#include "Car.h"
+#include "Motorcycle.h"
 #include "VehicleCatalog.h"
-
+#include <vector>
 template <typename VehicleType>
 VehicleType* inputVehicleData (){
     std::string brand, model;
@@ -15,7 +15,7 @@ VehicleType* inputVehicleData (){
     std::cin >> productionYear;
     std::cout << "Enter number of wheels: ";
     std::cin >> wheelCount;
-    if constexpr (std::is_same<Cars, VehicleType>::value) {
+    if constexpr (std::is_same<Car, VehicleType>::value) {
         std::string driveTrain; //brand of car, model of car, (4x4,rwd,fwd)
         int  GVW; //year of production, number of wheels, possible total weight
         std::cout << "Enter drive train (4x4,rwd,fwd): ";
@@ -25,7 +25,7 @@ VehicleType* inputVehicleData (){
         return new VehicleType(brand, model, productionYear, wheelCount, driveTrain, GVW);
     }
 
-    else if constexpr (std::is_same<VehicleType, Motocycle>::value){
+    else if constexpr (std::is_same<VehicleType, Motorcycle>::value){
         std::string type;
         int vMax;
         std::cout << "Enter maximum speed: ";
@@ -57,12 +57,20 @@ void editVehicle(VehicleCatalog& catalog, int ID) {
 int main() {
     VehicleCatalog vehicleCatalog;
     std::string pathToVehicleData {"Data_files/vehicle-data.dat"};
-    Vehicle* vehicle1 = new Cars("Honda", "Accord", 2005, 4, "4x4", 1300);
+    vehicleCatalog.loadVehicleDataFromFile(pathToVehicleData);
+    Vehicle* vehicle1 = new Car("Honda", "Accord", 2005, 4, "4x4", 1300);
     vehicleCatalog.addVehicle(vehicle1,10);
-    addManyVehicles<Cars>(vehicleCatalog,1);
-    vehicleCatalog.loadCatalogFromFile(pathToVehicleData);
+   //addManyVehicles<Car>(vehicleCatalog,1);
+
+    vehicleCatalog.addVehicle(vehicle1,30)
     vehicleCatalog.showInfo();
-    addManyVehicles<Motocycle>(vehicleCatalog,1);
+    addManyVehicles <Motorcycle>(vehicleCatalog, 1);
+    addManyVehicles<Car>(vehicleCatalog,3)
+
+    vehicleCatalog.saveVehicleDataToFile(pathToVehicleData);
+
+    std::vector <int> v1 (22);
+    //printf ("%d", !b);
 
     return 0;
 }

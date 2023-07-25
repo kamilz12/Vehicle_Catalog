@@ -1,17 +1,23 @@
 
 #include "Vehicle.h"
 
-#ifndef KOLOKWIUM2_SAMOCHOD_H
-#define KOLOKWIUM2_SAMOCHOD_H
+#ifndef VEHICLE_CATALOG_CAR_H
+#define VEHICLE_CATALOG_CAR_H
 
 
-class Cars: public Vehicle {
+class Car: public Vehicle {
 private:
     std::string driveTrain;
     int pessibleTotalWeight;
+    virtual std::string saveText() const override{
+        std::stringstream ss;
+        ss << "Car" << "," << brand << "," << model<< "," <<vehProductionYear<< "," <<wheelCount<< "," <<driveTrain<< "," <<pessibleTotalWeight << std::endl;
+        std::string dataFormula = ss.str();
+        return dataFormula;
+    }
 public:
-    Cars (const std::string& vehicleBrand, std::string vehicleModel, int vehicleProudctionYear, int vehicleWheelCount, const std::string& driveTrain, int GVW);
-     virtual ~Cars(){}
+    Car (const std::string& vehicleBrand, std::string vehicleModel, int vehicleProudctionYear, int vehicleWheelCount, const std::string& driveTrain, int GVW);
+     virtual ~Car(){}
 
     bool isDeliveryVan () const{
         if (pessibleTotalWeight > 3500){

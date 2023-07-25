@@ -5,13 +5,13 @@ Key Features
 
     Vehicle Class: This is an abstract base class representing a generic vehicle. It holds common attributes like brand, model, year of production, and wheel count. It also defines a pure virtual function writeToText() that must be implemented in derived classes.
 
-    Cars Class: Derived from the Vehicle class, this class represents a car. It includes additional attributes specific to cars, such as the type of drive train and possible total weight.
+    Car Class: Derived from the Vehicle class, this class represents a car. It includes additional attributes specific to cars, such as the type of drive train and possible total weight.
 
-    Motocycle Class: Also derived from the Vehicle class, this class represents a motorcycle. It contains additional attributes specific to motorcycles, such as maximum speed (vMax) and type.
+    Motorcycle Class: Also derived from the Vehicle class, this class represents a motorcycle. It contains additional attributes specific to motorcycles, such as maximum speed (vMax) and type.
 
     VehicleCatalog Class: This class manages the collection of vehicles using a map to store vehicles with unique IDs as keys. It provides methods to add vehicles to the catalog, display information about them, and access specific vehicles by their IDs.
 
-    Template Functions: The project utilizes template functions to enable users to input data for both Cars and Motocycles efficiently.
+    Template Functions: The project utilizes template functions to enable users to input data for both Car and Motocycles efficiently.
 
 Usage
 

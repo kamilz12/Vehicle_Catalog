@@ -12,7 +12,7 @@ int VehicleCatalog::getLastCatalogMapID(){
     return catalog.rbegin()->first;
 }
 
-void VehicleCatalog::loadCatalogFromFile (const std::string& fileName){
+void VehicleCatalog::loadVehicleDataFromFile (const std::string& fileName){
     std::ifstream inputFile (fileName);
     if (!inputFile){
         std::cerr << "Error, unable to open this file";
@@ -22,7 +22,7 @@ void VehicleCatalog::loadCatalogFromFile (const std::string& fileName){
         while (std::getline(inputFile, line)) {
             std::istringstream streamLine(line);
 
-            std::string tempStringToInt; // it's used to read a string number, and then it's converted to int
+            std::string tempStringToInt; // it's used to read a string number, and then it's converted to int by stoi()
             int ID, wheelCount, productionYear;
             std::string vehType, brand, model;
             Vehicle* vehicle;
@@ -55,7 +55,7 @@ void VehicleCatalog::loadCatalogFromFile (const std::string& fileName){
                 std::getline(streamLine, tempStringToInt, ',');
                 GVW = stoi(tempStringToInt);
 
-                vehicle = new Cars (brand,model,productionYear,wheelCount,driveTrain, GVW);
+                vehicle = new Car (brand, model, productionYear, wheelCount, driveTrain, GVW);
                 addVehicle(vehicle, ID);
             }
             else if (vehType == "Motorcycle") {
@@ -67,7 +67,7 @@ void VehicleCatalog::loadCatalogFromFile (const std::string& fileName){
 
                 std::getline(streamLine,motoType,',');
 
-                vehicle = new Motocycle (brand,model,productionYear,wheelCount,vMax,motoType);
+                vehicle = new Motorcycle (brand, model, productionYear, wheelCount, vMax, motoType);
                 addVehicle(vehicle,ID);
             }
         }
@@ -95,6 +95,22 @@ void VehicleCatalog::editVehicle(Vehicle* vehicle, int ID)
     catalog[ID] = vehicle;
 }
 
+void VehicleCatalog::busyID (Vehicle* vehicle) {
+    int choose;
+    std::cout << "Do you want to add a vehicle to the next available ID? type [0 - no, 1 -yes]: ";
+    std::cin >> choose;
+    switch (choose){
+        case 0:
+            break;
+        case 1:
+            addVehicle(vehicle);
+            break;
+        default:
+            std::cout << "Wrong choose";
+            break;
+    }
+}
+
 void VehicleCatalog::addVehicle (Vehicle* vehicle, int ID){
     if(isIDNotPresentInCatalog(ID))
     {
@@ -103,19 +119,7 @@ void VehicleCatalog::addVehicle (Vehicle* vehicle, int ID){
 
     else  {
         std::cerr << "You're trying to add a new vehicle when one already exists on ID: " << ID << std::endl;
-        int choose;
-        std::cout << "Do you want to add a vehicle to the next available ID? type [0 - no, 1 -yes]: ";
-        std::cin >> choose;
-        switch (choose){
-            case 0:
-                break;
-            case 1:
-                addVehicle(vehicle);
-                break;
-            default:
-                std::cout << "Wrong choose";
-                break;
-        }
+        busyID(vehicle);
     }
 }
 
@@ -153,4 +157,17 @@ Vehicle* VehicleCatalog::operator[](int ID){
 
 void VehicleCatalog::removeVehicle(int ID) {
     catalog.erase(ID);
+}
+
+void VehicleCatalog::saveVehicleDataToFile(const std::string &fileName) {
+    std::ofstream outputFile (fileName);
+    if (!outputFile){
+        std::cerr << "Error: can't open file" << fileName;
+    }
+    if (catalog.size() > 0){
+        for (const auto& element : catalog) {
+            outputFile << element.first << "," << element.second->saveText();
+        }
+    }
+    outputFile.close();
 }

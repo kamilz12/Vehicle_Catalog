@@ -2,8 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#ifndef KOLOKWIUM2_POJAZD_H
-#define KOLOKWIUM2_POJAZD_H
+#include <sstream>
+#ifndef VEHICLE_CATALOG_VEHICLE_H
+#define VEHICLE_CATALOG_VEHICLE_H
 
 class Vehicle {
 protected:
@@ -16,6 +17,7 @@ public:
     virtual ~Vehicle() {}
     Vehicle(const std::string &brand, const std::string &model, const int vehProductionYear, const int wheelCount);
     virtual void writeToText() const = 0;
+    virtual std::string saveText () const = 0;
 
 };
 
