@@ -62,10 +62,10 @@ int main() {
     vehicleCatalog.addVehicle(vehicle1,10);
    //addManyVehicles<Car>(vehicleCatalog,1);
 
-    vehicleCatalog.addVehicle(vehicle1,30)
+    vehicleCatalog.addVehicle(vehicle1,30);
     vehicleCatalog.showInfo();
     addManyVehicles <Motorcycle>(vehicleCatalog, 1);
-    addManyVehicles<Car>(vehicleCatalog,3)
+    addManyVehicles<Car>(vehicleCatalog,3);
 
     vehicleCatalog.saveVehicleDataToFile(pathToVehicleData);
 

@@ -11,10 +11,9 @@
 #include <string>
 class VehicleCatalog {
 private:
-
-
-public:
     std::map<int, Vehicle*> catalog;
+public:
+
     void loadVehicleDataFromFile (const std::string& fileName);
     void saveVehicleDataToFile (const std::string& fileName);
     int getLastCatalogMapID();
@@ -29,7 +28,7 @@ public:
     /*This method allow us to add more than one vehicle to our map catalog */
     template <typename VehicleType>
     void addVehicles(std::vector<VehicleType*>&veh_vector){
-        int numVehiclesToAdd = stax1tic_cast<int>(veh_vector.size());
+        int numVehiclesToAdd = static_cast<int>(veh_vector.size());
         /*Looking for first not used ID*/
         int nextID = getAvailableID();
         // Add vehicles to the catalog with sequential IDs
