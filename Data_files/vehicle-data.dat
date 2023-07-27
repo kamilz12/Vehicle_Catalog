@@ -3,4 +3,9 @@
 2,Car,BMW,5SERIES,4,2003,RWD,1650
 3,Car,BMW,4SERIES,2003,4,RWD,1450
 4,Car,BMW,5SERIES,2004,4,RWD,1500
+5,Car,BMW,4SERIES,4,2003,RWD,1450
+6,Motorcycle,audi,a3,4,2004,400,speed
+7,Car,bmw,e60,4,2004,rwd,0
+8,Motorcycle,audi,a6,2003,4,400,speed
+9,Car,toyota,avensis,2015,4,4x4,1500
 10,Car,Honda,Accord,4,2005,4x4,1300
