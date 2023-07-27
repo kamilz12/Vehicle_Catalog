@@ -9,10 +9,11 @@ private:
     std::string driveTrain;
     int pessibleTotalWeight;
 
-    virtual std::string saveText() const override;
+
 public:
     Car(const std::string& vehicleBrand, std::string vehicleModel, int vehicleProudctionYear, int vehicleWheelCount, const std::string& driveTrain, int GVW);
     virtual ~Car(){}
+    virtual std::string saveText() const override;
 
     bool isDeliveryVan () const;
     virtual void writeToText() const override;
@@ -20,4 +21,4 @@ public:
 };
 
 
-#endif //KOLOKWIUM2_SAMOCHOD_H
+#endif //VEHICLE_CATALOG_CAR_H

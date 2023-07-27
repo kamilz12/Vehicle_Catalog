@@ -159,15 +159,18 @@ void VehicleCatalog::removeVehicle(int ID) {
     catalog.erase(ID);
 }
 
-void VehicleCatalog::saveVehicleDataToFile(const std::string &fileName) {
-    std::ofstream outputFile (fileName);
-    if (!outputFile){
-        std::cerr << "Error: can't open file" << fileName;
+void VehicleCatalog::saveVehicleDataToFile(const std::string& fileName) {
+    std::ofstream outputFile(fileName);
+    if (!outputFile) {
+        std::cerr << "Error: can't open file " << fileName << std::endl;
+        return;
     }
-    if (catalog.size() > 0){
-        for (const auto& element : catalog) {
-            outputFile << element.first << "," << element.second->saveText();
-        }
+
+    for (const auto &element : catalog) {
+        std::stringstream ss;
+        ss << element.first << "," << element.second->saveText() << std::endl;
+        std::string savedText = ss.str();
+        outputFile << savedText;
     }
     outputFile.close();
 }

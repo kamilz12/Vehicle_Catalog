@@ -3,6 +3,7 @@
 #include "Motorcycle.h"
 #include "VehicleCatalog.h"
 
+#include <type_traits>
 #include <vector>
 
 template <typename VehicleType>
@@ -17,14 +18,14 @@ VehicleType* inputVehicleData (){
     std::cin >> productionYear;
     std::cout << "Enter number of wheels: ";
     std::cin >> wheelCount;
-    if  constexpr (std::is_same<Car, VehicleType>::value) {
-        std::string driveTrain; //brand of car, model of car, (4x4,rwd,fwd)
-        int  GVW; //year of production, number of wheels, possible total weight
+    if constexpr (std::is_same<Car, VehicleType>::value) {
+        std::string driveTrain;
+        int  GVW;
         std::cout << "Enter drive train (4x4,rwd,fwd): ";
         std::cin >> driveTrain;
         std::cout << "Enter GVW: ";
         std::cin >> GVW;
-        return new VehicleType(brand, model, productionYear, wheelCount, driveTrain, GVW);
+        return new Car(brand, model, productionYear, wheelCount, driveTrain, GVW);
     }
 
     else if constexpr (std::is_same<VehicleType, Motorcycle>::value){
@@ -34,7 +35,7 @@ VehicleType* inputVehicleData (){
         std::cin >> vMax;
         std::cout << "Enter type: ";
         std::cin >> type;
-        return new VehicleType (brand,model,productionYear,wheelCount, vMax, type);
+        return new Motorcycle (brand,model,productionYear,wheelCount, vMax, type);
     }
 }
 /*That function allow us to add specifed number of cars to our catalog*/
@@ -60,20 +61,13 @@ int main() {
     VehicleCatalog vehicleCatalog;
     std::string pathToVehicleData {"Data_files/vehicle-data.dat"};
     vehicleCatalog.loadVehicleDataFromFile(pathToVehicleData);
-    Vehicle* vehicle1 = new Car("Honda", "Accord", 2005, 4, "4x4", 1300);
-    vehicleCatalog.addVehicle(vehicle1,10);
-   //addManyVehicles<Car>(vehicleCatalog,1);
+    Vehicle *vehicle1 = new Car("BMW", "4SERIES", 2003,4, "RWD",1450);
+    vehicleCatalog.addVehicle(vehicle1,3);
 
-    vehicleCatalog.addVehicle(vehicle1,30);
+    addManyVehicles<Motorcycle>(vehicleCatalog,1);
+    addManyVehicles<Car>(vehicleCatalog,1);
     vehicleCatalog.showInfo();
-    addManyVehicles <Motorcycle>(vehicleCatalog, 1);
-    addManyVehicles<Car>(vehicleCatalog,3);
-
     vehicleCatalog.saveVehicleDataToFile(pathToVehicleData);
-
-    std::vector <int> v1 (22);
-    //printf ("%d", !b);
 
     return 0;
 }
-

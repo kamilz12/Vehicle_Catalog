@@ -28,6 +28,10 @@ public:
     void addVehicle (Vehicle* vehicle, int ID); // Add vehicle to specified ID
     void showInfo() const;
     void busyID (Vehicle* vehicle);
+    template <typename VehicleType>
+    VehicleType* inputVehicleData (){
+
+    }
 
     /*This method allow us to add more than one vehicle to our map catalog */
     template <typename VehicleType>
@@ -49,4 +53,4 @@ public:
     Vehicle* operator[](int ID);
 };
 
-#endif //KOLOKWIUM2_VEHICLECATALOG_H
+#endif //VEHICLE_CATALOG_VEHICLECATALOG_H

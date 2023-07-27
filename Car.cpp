@@ -5,9 +5,9 @@ Car::Car(const std::string& vehicleBrand, std::string vehicleModel, int vehicleP
     Vehicle(vehicleBrand, vehicleModel, vehicleProudctionYear, vehicleWheelCount),
     driveTrain(driveTrain), pessibleTotalWeight(GVW){}
 
-std::string Car::saveText() const {
+std::string Car::saveText() const{
     std::stringstream ss;
-    ss << "Car" << "," << brand << "," << model<< "," <<vehProductionYear<< "," <<wheelCount<< "," <<driveTrain<< "," <<pessibleTotalWeight << std::endl;
+    ss << "Car" << "," << brand << "," << model<< "," <<vehProductionYear<< "," <<wheelCount<< "," <<driveTrain<< "," <<pessibleTotalWeight;
     std::string dataFormula = ss.str();
     return dataFormula;
 }
@@ -28,3 +28,4 @@ void Car::writeToText() const {
               "Drive Train : " << driveTrain << std::endl <<
               "Possible Total Weight: " << pessibleTotalWeight << std::endl;
 }
+

@@ -1,27 +1,44 @@
-Vehicle Catalog - C++ Project
+# Vehicle Catalog - C++ Project
 
 Vehicle Catalog is a C++ program that allows users to create and manage a catalog of cars and motorcycles. The program leverages object-oriented programming (OOP) principles, including polymorphism and templates, to efficiently handle different types of vehicles.
-Key Features
 
-    Vehicle Class: This is an abstract base class representing a generic vehicle. It holds common attributes like brand, model, year of production, and wheel count. It also defines a pure virtual function writeToText() that must be implemented in derived classes.
+## Key Features
 
-    Car Class: Derived from the Vehicle class, this class represents a car. It includes additional attributes specific to cars, such as the type of drive train and possible total weight.
+Vehicle Class (Vehicle.h):
+        Base class representing a generic vehicle.
+        Contains common attributes like brand, model, production year, and wheel count.
+        Provides pure virtual functions writeToText() and saveText(), which must be implemented by derived classes.
 
-    Motorcycle Class: Also derived from the Vehicle class, this class represents a motorcycle. It contains additional attributes specific to motorcycles, such as maximum speed (vMax) and type.
+    Car Class (Car.h):
+        Derived class of Vehicle.
+        Represents a specific type of vehicle, i.e., a car.
+        Contains additional attributes like drivetrain and possible total weight (GVW).
+        Implements writeToText() and saveText() functions for printing and saving car-specific information.
 
-    VehicleCatalog Class: This class manages the collection of vehicles using a map to store vehicles with unique IDs as keys. It provides methods to add vehicles to the catalog, display information about them, and access specific vehicles by their IDs.
+    Motorcycle Class (Motorcycle.h):
+        Derived class of Vehicle.
+        Represents a specific type of vehicle, i.e., a motorcycle.
+        Contains additional attributes like maximum speed and type.
+        Implements writeToText() and saveText() functions for printing and saving motorcycle-specific information.
 
-    Template Functions: The project utilizes template functions to enable users to input data for both Car and Motocycles efficiently.
+    VehicleCatalog Class (VehicleCatalog.h):
+        Manages a collection of vehicles using a map.
+        Provides functionality to load vehicle data from a file, add vehicles to the catalog, edit vehicle information, and save the data back to a file.
+        Contains helper functions to handle vehicle ID management and displaying vehicle information.
+        Implements templated functions addVehicles and inputVehicleData to add multiple vehicles of different types to the catalog.
 
-Usage
+    Main Function (main.cpp):
+        Defines the entry point of the program.
+        Creates an instance of VehicleCatalog to manage the vehicles.
+        Loads vehicle data from a file.
+        Adds vehicles to the catalog using different methods, including manual input and adding multiple vehicles at once.
+        Displays vehicle information and saves the updated data back to the file.
 
-    Clone the repository to your local machine.
-    Compile the C++ source files using your preferred compiler.
-    Run the executable to launch the Vehicle Catalog program.
-    Follow the on-screen instructions to add vehicles to the catalog.
 
-Future Improvements
+## Future Improvements
 
     Implement a graphical user interface (GUI) for a more user-friendly experience.
-    Add functionalities for vehicle deletion, editing, saving, and reading information from file.
     Allow users to search and sort the vehicle catalog based on specific criteria.
+
+## Done improvements  
+- Add functionalities for vehicle deletion, editing, saving, and reading information from file. 

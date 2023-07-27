@@ -24,4 +24,4 @@ public:
 
 
 
-#endif //KOLOKWIUM2_MOTOCYKL_H
+#endif //VEHICLE_CATALOG_MOTORCYCLE_H

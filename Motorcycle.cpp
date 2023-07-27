@@ -8,7 +8,7 @@ Motorcycle::Motorcycle(const std::string &vehicleBrand, const std::string &vehic
 
 std::string Motorcycle::saveText() const {
     std::stringstream ss;
-    ss << "Motorcycle" << "," << brand << "," << model<< "," <<vehProductionYear<< "," <<wheelCount<< "," <<vMax<< "," <<type <<std::endl;
+    ss << "Motorcycle" << "," << brand << "," << model<< "," <<vehProductionYear<< "," <<wheelCount<< "," <<vMax<< "," <<type;
     std::string dataFormula = ss.str();
     return dataFormula;
 }

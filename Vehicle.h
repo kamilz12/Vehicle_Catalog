@@ -19,4 +19,4 @@ public:
     virtual std::string saveText () const = 0;
 };
 
-#endif //KOLOKWIUM2_POJAZD_H
+#endif //VEHICLE_CATALOG_VEHICLE_H
